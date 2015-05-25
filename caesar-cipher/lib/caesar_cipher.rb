@@ -9,7 +9,7 @@ def caesar_cipher text, key
 			end
 		elsif c >96 && c<123
 			c+=key
-			if c>123
+			if c>122
 				c-=26
 			end
 		else
@@ -22,6 +22,7 @@ end
 
 def better_caesar text, key
 	alphabet = ('a'..'z').to_a.join
+	key -=26 while key>26
 	permutation = alphabet[key..-1] + alphabet[0...key]
 	text.tr!(alphabet, permutation)
 	text.tr(alphabet.upcase, permutation.upcase)
